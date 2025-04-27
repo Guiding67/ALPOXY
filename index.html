@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALPOXY</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background-color: white;
+      color: black;
+      font-family: sans-serif;
+    }
+
+    .navbar {
+      background-color: #1DBD29;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+    }
+
+    .menu {
+      display: flex;
+      gap: 20px;
+      position: relative;
+      align-items: center;
+    }
+
+    .menu a, .dropdown > a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      display: inline-block;
+    }
+
+    .menu a:hover, .dropdown > a:hover {
+      background-color: #158a1f;
+    }
+
+    .site-title {
+      font-size: 36px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .dark-mode-toggle {
+      background-color: transparent;
+      border: none;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      margin-left: 20px;
+      transition: color 0.3s;
+    }
+
+    .dark-mode-toggle:hover {
+      color: yellow;
+    }
+
+    /* Koyu Mod */
+    .dark-mode {
+      background-color: #121212;
+      color: white;
+    }
+
+    /* Koyu modda tüm yazıları beyaz yap, ama arka planları değiştirme */
+    .dark-mode * {
+      color: white;
+      background-color: transparent;
+    }
+
+    /* Navbar her zaman yeşil kalsın */
+    .dark-mode .navbar {
+      background-color: #1DBD29;
+    }
+
+    /* Dropdown içerikleri */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #1DBD29;
+      min-width: 160px;
+      z-index: 1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #158a1f;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    /* Content sections */
+    .content {
+      display: none;
+    }
+
+    .content.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="menu">
+      <div class="dropdown">
+        <a href="#" "showContent('moblar')">Moblar</a>
+        <div class="dropdown-content">
+          <a href="#" onclick="showContent('pasif-moblar')">Pasif Moblar</a>
+          <a href="#" onclick="showContent('notr-moblar')">Nötr Moblar</a>
+          <a href="#" onclick="showContent('saldirgan-moblar')">Saldırgan Moblar</a>
+        </div>
+      </div>
+      <a href="#" onclick="showContent('biyomlar')">Biyomlar</a>
+      <div class="dropdown">
+        <a href="#" "showContent('tarim')">Tarım</a>
+        <div class="dropdown-content">
+          <a href="#" onclick="showContent('temel-tarim')">Temel Tarım</a>
+          <a href="#" onclick="showContent('otomatik-tarim')">Otomatik Tarım</a>
+          <a href="#" onclick="showContent('ipuclari')">İpuçları</a>
+        </div>
+      </div>
+      <a href="#" onclick="showContent('buyuler')">Büyüler</a>
+      <a href="#" onclick="showContent('iksirler')">İksirler</a>
+      <a href="#" onclick="showContent('madenler')">Madenler</a>
+      <div class="dropdown">
+        <a href="#" "showContent('redstone')">Redstone</a>
+        <div class="dropdown-content">
+          <a href="#" onclick="showContent('temel-redstone')">Temel Redstone</a>
+          <a href="#" onclick="showContent('otomatik-devreler')">Otomatik Devreler</a>
+          <a href="#" onclick="showContent('redstone-tuzaklari')">Redstone Tuzakları</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a href="#" "showContent('komutlar')">Komutlar</a>
+        <div class="dropdown-content">
+          <a href="#" onclick="showContent('temel-komutlar')">Temel Komutlar</a>
+          <a href="#" onclick="showContent('komut-bloklari')">Komut Blokları</a>
+          <a href="#" onclick="showContent('komut-esyalari')">Komut Eşyaları</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a href="#" "showContent('modlar')">Modlar</a>
+        <div class="dropdown-content">
+          <a href="#" onclick="showContent('populer-modlar')">Popüler Modlar</a>
+          <a href="#" onclick="showContent('shaderlar')">Shaderlar</a>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center;">
+      <div class="site-title">ALPOXY</div>
+      <button class="dark-mode-toggle">
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Content Sections -->
+  <div id="pasif-moblar" class="content">
+    <h2>Pasif Moblar</h2>
+    <p>Burada pasif moblarla ilgili bilgiler yer alacak.</p>
+  </div>
+  <div id="notr-moblar" class="content">
+    <h2>Nötr Moblar</h2>
+    <p>Burada nötr moblarla ilgili bilgiler yer alacak.</p>
+  </div>
+  <div id="saldirgan-moblar" class="content">
+    <h2>Saldırgan Moblar</h2>
+    <p>Burada saldırgan moblarla ilgili bilgiler yer alacak.</p>
+  </div>
+  <div id="biyomlar" class="content">
+    <h2>Biyomlar</h2>
+    <p>Burada biyomlarla ilgili bilgiler yer alacak.</p>
+  </div>
+  <div id="iksirler" class="content">
+    <h2>İksirler</h2>
+    <p>Burada iksirlerle ilgili bilgiler yer alacak.</p>
+  </div>
+  <div id="buyuler" class="content">
+    <h2>Büyüler</h2>
+    <p>Burada büyülerle ilgili bilgiler yer alacak.</p>
+  </div>
+  <div id="temel-tarim" class="content">
+    <h2>Temel Tarım</h2>
+    <p>Burada temel tarımla ilgili bilgiler yer alacak.</p>
+  </div>
+  <div id="otomatik-tarim" class="content">
+    <h2>Otomatik Tarım</h2>
+    <p>Burada otomatik tarımla ilgili bilgiler yer alacak.</p>
+  </div>
+   <div id="ipuclari" class="content">
+    <h2>İpuçları</h2>
+    <p>Burada tarımla ilgili ipuçları yer alacak.</p>
+  </div>
+   <div id="madenler" class="content">
+    <h2>Madenler</h2>
+    <p>Burada madenlerle ilgili bilgiler yer alacak.</p>
+  </div>
+   <div id="temel-redstone" class="content">
+    <h2>Temel Redstone</h2>
+    <p>Burada redstonela ilgili bilgiler yer alacak.</p>
+  </div>
+   <div id="otomatik-devreler" class="content">
+    <h2>Otomatik Devreler</h2>
+    <p>Burada otomatik devrelerle ilgili bilgiler yer alacak.</p>
+  </div>
+   <div id="redstone-tuzaklari" class="content">
+    <h2>Redstone Tuzakları</h2>
+    <p>Burada redstone tuzakları ilgili bilgiler yer alacak.</p>
+  </div>
+   <div id="temel-komutlar" class="content">
+    <h2>Temel Komutlar</h2>
+    <p>Burada komutlarla ilgili bilgiler yer alacak.</p>
+  </div>
+   <div id="komut-bloklari" class="content">
+    <h2>Komut Blokları</h2>
+    <p>Burada komut blokları ile ilgili bilgiler yer alacak.</p>
+  </div>
+   <div id="komut-esyalari" class="content">
+    <h2>Komut Eşyaları</h2>
+    <p>Burada komutla alınan eşyalar ilgili bilgiler yer alacak.</p>
+  </div>
+   <div id="populer-modlar" class="content">
+    <h2>Popüler Modlar</h2>
+    <p>Burada popüler modlarla ilgili bilgiler yer alacak.</p>
+  </div>
+   <div id="shaderlar" class="content">
+    <h2>Shaderlar</h2>
+    <p>Burada shaderlarla ilgili bilgiler yer alacak.</p>
+  </div>
+  <!-- Diğer içerik bölümleri de burada olacak... -->
+
+  <script>
+    function showContent(contentId) {
+      // Tüm içerikleri gizle
+      const sections = document.querySelectorAll('.content');
+      sections.forEach(section => section.classList.remove('active'));
+
+      // Seçilen içeriği göster
+      const activeSection = document.getElementById(contentId);
+      if (activeSection) {
+        activeSection.classList.add('active');
+      }
+    }
+
+    const button = document.querySelector('.dark-mode-toggle');
+    const icon = button.querySelector('i');
+
+    button.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+
+      if (document.body.classList.contains('dark-mode')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+        button.classList.add('sun');
+      } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+        button.classList.remove('sun');
+      }
+    });
+  </script>
+</body>
+</html>
